@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -xe
+
+go_workspace=go-workspace
+
+mkdir -p ${HOME}/${go_workspace}/{src,pkg,bin}
+
+sudo apt-get update
+sudo apt-get -y upgrade
+
+wget https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
+
+sudo tar -xvf go1.7.4.linux-amd64.tar.gz
+sudo mv go /usr/local
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/${go_workspace}
+
+echo "export GOROOT=/usr/local/go" >> ~/.bash_profile
+echo "export GOPATH=$HOME/${go_workspace}/" >> ~/.bash_profile
+echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.bash_profile
