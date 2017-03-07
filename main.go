@@ -66,6 +66,10 @@ func EnvHandler(rw http.ResponseWriter, req *http.Request) {
 	rw.Write(envJSON)
 }
 
+func HealthCheckHandler(rw http.ResponseWriter, req *http.Request) {
+	rw.Write([]byte("Ok"))
+}
+
 func HandleError(result interface{}, err error) (r interface{}) {
 	if err != nil {
 		panic(err)
@@ -84,6 +88,7 @@ func main() {
 	r.Path("/rpush/{key}/{value}").Methods("GET").HandlerFunc(ListPushHandler)
 	r.Path("/info").Methods("GET").HandlerFunc(InfoHandler)
 	r.Path("/env").Methods("GET").HandlerFunc(EnvHandler)
+	r.Path("/health").Methods("GET").HandlerFunc(HealthCheckHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(r)
