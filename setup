@@ -18,6 +18,7 @@ sudo mv go /usr/local
 
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/${go_workspace}
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 echo "export GOROOT=/usr/local/go" >> ~/.bash_profile
 echo "export GOPATH=$HOME/${go_workspace}/" >> ~/.bash_profile
