@@ -32,3 +32,5 @@ sudo chown -R ubuntu:ubuntu /var/log/guestbook.log
 
 sudo cp guestbook.conf /etc/supervisor/conf.d
 sudo service supervisor start
+sudo supervisorctl reread
+sudo supervisorctl update
